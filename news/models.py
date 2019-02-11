@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import bbcode
 
 
 class Post(models.Model):
@@ -17,3 +18,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    @property
+    def txt(self):
+        return bbcode.render_html(self.text)
