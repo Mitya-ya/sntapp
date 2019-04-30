@@ -9,3 +9,5 @@ urlpatterns = [
     url(r'new_indications/', views.new_indications, name='new_indications'),
     url(r'snt/', views.snt, name='snt'),
 ]
+
+
