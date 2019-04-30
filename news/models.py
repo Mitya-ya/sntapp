@@ -52,8 +52,8 @@ class Indications(models.Model):
     def __str__(self):
         return self.area.number + ' ' + self.date.date.strftime('%Y-%m-%d') + ' ' + str(self.T1) + '/' + str(self.T2)
 
-    #class Meta:
-    #    unique_together = (("date", "area"),)
+    class Meta:
+        unique_together = (("date", "area"),)
     #    index_together = [["date", "area"], ]
 
 
