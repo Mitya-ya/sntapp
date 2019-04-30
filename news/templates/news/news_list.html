@@ -1,13 +1,35 @@
 {% extends 'news/base.html' %}
-{% block content_hdr %}
-  Новости и объявления
+{% block crumbs %}
+  <li class="breadcrumb-item active  text-white" aria-current="page">
+      Новости и объявления
+  </li>
+{% endblock %}
+{% block left %}
+  <div>
+      <div class="row">
+          <p class="mb-3">Подпишитесь на новостную рассылку, чтобы быть в курсе всех важных событий, происходящих в вашем товариществе!</p>
+            <form action="/" method="post">
+                {% csrf_token %}
+                <table>
+                {{ subscribe_form }}
+                </table>
+                <input class="btn-block" type="submit" value="Подписаться" />
+            </form>
+      </div>
+      <!--form id="subscribe_form" action="/" method="post">
+      {% csrf_token %}
+      <label for="email">Email : </label>
+    <input id="email" class="btn-block" type="text" name="email" value="">
+    <input class="btn mb-2 btn-outline-info btn-block" type="submit" value="Подписаться">
+  </form-->
+  </div>
 {% endblock %}
 {% block content %}
   {% for post in posts %}
-  <div class="blog-post">
-      <h2 class="blog-post-title">{{ post.title }}</h2>
-      <p class="blog-post-meta">{{ post.created_date }} <a href="#">{{ post.author }}</a></p>
-      <p>{{ post.txt|safe|linebreaks }}</p>
+  <div class="jumbotron jumbotron-fluid pt-0 pb-2 pl-2">
+      <div class="h5 bg-secondary text-white pt-1 pb-1 pl-2">{{ post.Title }}</div>
+      <p class="badge badge-secondary mr-3">{{ post.created_date }} </p><a href="#">{{ post.author }}</a>
+      <div>{{ post.txt|safe|linebreaks }}</div>
   </div>
   {% endfor %}
 {% endblock %}

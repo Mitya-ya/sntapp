@@ -1,0 +1,23 @@
+{% extends 'news/base.html' %}
+{% block crumbs %}
+  <li class="breadcrumb-item active  text-white" aria-current="page">
+      Информация по оплате
+  </li>
+{% endblock %}
+{% block content %}
+  <div class="h3">Сервис в настоящее время находится в разработке</div>
+  {% if not data.number %}
+  <form id="area_number_form" action="/payinfo/" method="post">
+    {% csrf_token %}
+    <label for="area_number">Номер участка: </label>
+    <input id="area_number" type="text" name="area_number" value="">
+    <input type="submit" value="OK">
+  </form>
+  {% else %}
+    {% for debt in debts %}
+    <div>
+        <h4>{{ debt.title }} : {{ debt.value }} </h4>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

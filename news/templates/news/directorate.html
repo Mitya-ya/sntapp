@@ -1,0 +1,15 @@
+{% extends 'news/base.html' %}
+{% block crumbs %}
+  <li class="breadcrumb-item"><a href="\snt">СНТ</a></li>
+  <li class="breadcrumb-item active  text-white" aria-current="page">
+      Правление
+  </li>
+{% endblock %}
+{% block content %}
+  <h4 class="mb-5 text-info align-items-center">Состав правления СНТ</h4>
+  {% for item in items %}
+  <div>
+      <p>{{ item.owner }}&nbsp;&nbsp;(уч.{{ item.number }}): &nbsp; {{ item.job }}</p>
+  </div>
+  {% endfor %}
+{% endblock %}
